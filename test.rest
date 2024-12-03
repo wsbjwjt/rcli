@@ -1,3 +1,8 @@
-### Test index page
+### Test static file with axum
 
-GET http://localhost:8080/fixtures/blake3.txt
+GET http://localhost:8080/fixtures/b64.txt
+
+
+### Test static file with tower-http
+
+GET http://localhost:8080/tower/fixtures/b64.txt

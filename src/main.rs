@@ -7,11 +7,12 @@ use rcli::{
     Base64SubCommand, HttpSubCommand, Opts, SubCommand, TextSubCommand,
 };
 use std::fs;
+use tracing_subscriber::{fmt, layer::SubscriberExt, util::SubscriberInitExt};
 use zxcvbn::zxcvbn;
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
-    tracing_subscriber::fmt::init();
+    tracing_subscriber::registry().with(fmt::layer()).init();
     let opts: Opts = Opts::parse();
     match opts.cmd {
         SubCommand::Csv(opts) => {
